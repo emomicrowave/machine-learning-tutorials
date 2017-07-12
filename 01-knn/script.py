@@ -10,16 +10,17 @@ df.columns = ['sepalum_laenge', 'sepalum_breite', 'petalum_laenge', 'petalum_bre
 
 # Klasse der Datensatz als numerische Werte darstellen
 df['klasse'] = pd.factorize(df['klasse'])[0]
+print(df.head(5))
 
 # Daten plotten
 colors = list(df['klasse'])
 plt.scatter(df['sepalum_laenge'], df['sepalum_breite'], c=colors)
 plt.title("Sepalum Länge und Sepalum Breite")
-#plt.show()
+plt.show()
 
 plt.scatter(df['petalum_laenge'], df['petalum_breite'], c=colors)
 plt.title("Petalum Länge und Petalum Breite")
-#plt.show()
+plt.show()
 
 # Training- und Testdaten erzeugen
 test = df.sample(int(len(df) * 0.2))

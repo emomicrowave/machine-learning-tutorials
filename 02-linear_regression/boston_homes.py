@@ -46,9 +46,19 @@ pred = regr.predict(x_test)
 
 # Mittlere Quadratfehler
 mse = np.mean((y_test - regr.predict(x_test)) ** 2)
-print(mse)
+print("Mittlere Quadratfehler: %d" % mse)
+
+# alternative function: 
+# regr.score(x_test, y_test)
+
+# mit einem anderen Modell für Lineare Regression versuchen
+new_X = df[["RM", "CHAS"]]
 
 regr = linear_model.LinearRegression()
-regr.fit(np.array(df.RM), y)
-mse = np.mean((y_test - regr.predict(x_test)) ** 2)
-print(mse)
+regr.fit(new_X, y)
+mse = np.mean((target - regr.predict(new_X)) ** 2)
+print("Mittlere Quadratfehler: %d" % mse)
+
+#TODO: Lineares Modell für Klassifizierung
+
+

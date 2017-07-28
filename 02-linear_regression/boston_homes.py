@@ -14,6 +14,8 @@ def plot2d(x,y):
     ax.scatter(x, y)
     plt.show()
 
+def mean_squared_error(y,y_hat):
+    return np.mean((y - y_hat) ** 2)
 
 # Datensatz laden
 data = datasets.load_boston()
@@ -45,8 +47,8 @@ pred = regr.predict(x_test)
 #plot2d(y_test, pred)
 
 # Mittlere Quadratfehler
-mse = np.mean((y_test - regr.predict(x_test)) ** 2)
-print("Mittlere Quadratfehler: %d" % mse)
+mse = mean_squared_error(y_test, regr.predict(x_test))
+print("Mittlere Quadratfehler: %f" % mse)
 
 # alternative function: 
 # regr.score(x_test, y_test)
@@ -56,8 +58,9 @@ new_X = df[["RM", "CHAS"]]
 
 regr = linear_model.LinearRegression()
 regr.fit(new_X, y)
-mse = np.mean((target - regr.predict(new_X)) ** 2)
-print("Mittlere Quadratfehler: %d" % mse)
+
+mse = mean_squared_error(target, regr.predict(new_X))
+print("Mittlere Quadratfehler: %f" % mse)
 
 #TODO: Lineares Modell für Klassifizierung
 

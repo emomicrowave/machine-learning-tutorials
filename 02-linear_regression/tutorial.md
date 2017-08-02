@@ -44,10 +44,10 @@ from sklearn.model_selection import train_test_split
 
 Wie gesagt, wir können diesmal den Datensatz vom sklearn importieren. Trotzdem speichern wir ihn in eine Pandas DataFrame, damit es einfacher ist, verschiedene Attribute zuzugreifen.
 Die rückgabe von `load_boston()` ist ein Wörterbuch, mit 4 Attributen:
-- `data.data` 
-- `data.target`
-- `data.feature_names`
-- `data.DESCR`
+- `data.data` - ein numpy-Array, die die 13 Attribute und deren Werte enthält. Eigentlich die X Menge.
+- `data.target` - die *y* Menge, also 1-Dimensionales Array, das die Preise der Immobilien enthält
+- `data.feature_names` - eine Liste mit den Namen der 13 Attribute
+- `data.DESCR` - eine Zeichenkette der Beschrebung der Daten. Alle Attribute sind da erklärt.
 
 ```python
 # Datensatz laden
@@ -57,7 +57,101 @@ df.columns = data.feature_names
 
 target = pd.DataFrame(data.target)
 target.columns = ["PRICE"]
+```
+Jetzt wollen wir die Daten für die Regression vorbereiten und dann sie analysieren. Zuerst wollen wir die in Test- und Trainingsdaten splitten. Dafür verwenden wir die Funktion `train_test_split()` von `sklearn.model_selection`, die ein 4-tupel von Arrays zurückgibt. Deswegen kann man einfach so machen:
+
+```python
+x_train, x_test, y_train, y_test = train_test_split(df, target, test_size=0.25, random_state=42)
+```
+Das verwendet 1/4 der Daten als Trainingsdaten, und weil wir ein `random_state` spezifiziert haben, werden bei jeder Ausfürung dieselben Daten als Testdaten gewählt.
+
+Jetzt wollen wir das Regressionsmodell anpassen und dann das Ergebniss analysieren. 
+
+```python
+# Anpassen des linearen Modells
+regr = linear_model.LinearRegression()
+regr.fit(x_train, y_train)
+
+# Koeffiziente der Regression
+coef = pd.DataFrame({'features': df.columns, 'coef': regr.coef_[0]})
+print(coef)
+```
+
+Wir verwenden die Trainigsdaten um das Modell anzupassen. So werden auch die Koeffiziente der Regression berechnet. Das sind die Zahlen, mit denen die unabhängige Variablen multipliziert werden, um die abhängige Variable zu berechnen. Das sind die Koeffizienten.
 
 ```
+         coef features
+0   -0.127825     CRIM
+1    0.029521       ZN
+2    0.049264    INDUS
+3    2.775944     CHAS
+4  -16.280196      NOX
+5    4.360896       RM
+6   -0.009191      AGE
+7   -1.401720      DIS
+8    0.257459      RAD
+9   -0.009947      TAX
+10  -0.924266  PTRATIO
+11   0.013316        B
+12  -0.518566    LSTAT
+
+```
+
+Es ist zu sehen, dass das Modell startk von den Variablen CHAS, NOX und RM abhängig ist. Wir können besser diese Abhängigkeiten plotten um besseren Überblick über die Beziehungen dieser Variablen zu bekommen. Wir bräuchten dafür eine einfache Funktion.
+
+```python
+def plot2d(x,y):
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.scatter(x, y)
+    plt.show()
+
+# interessante Daten plotten
+plot2d(df.NOX, target)
+plot2d(df.RM, target)
+plot2d(df.CHAS, target)
+
+```
+*drei Bilder hier*
+
+Man kann für NOX ein negatives lineares und für RM ein positives lineares Verhältnis erkennen. Es ist aber schwierig ein Muster für CHAS zu finden, weil das eine binäre Variable ist. Wir merken und diese Information und erzeugen zuerst Hervorsagen mit alle 13 Attributen.
+
+```python
+def mean_squared_error(y,y_hat):
+    return np.mean((y - y_hat) ** 2)
+
+# Vorhersage plotten
+pred = regr.predict(x_test)
+plot2d(y_test, pred)
+
+# Mittlere Quadratfehler
+mse = mean_squared_error(y_test, regr.predict(x_test))
+print("Mittlere Quadratfehler: %f" % mse)
+
+>> Mittlere Quadratfehler: 22.11516
+```
+
+Eine gute Metrik für die Genauigkeit eines Regressionsmodell ist die mittlere Quadratfehler. Das ist das Quadrat der Differenz zwischen die Vorhersagen und die aktuelle Werte von *y*. Eine kleiere Zahl bedeutet eine akkuratere Vorhersage. Wir haben eine eigene Funktion erstellt, man kann aber auch `regr.score(X,y)` verwenden. Das gibt eine Zahl zwischen 0 und 1, wobei eine größere Zahl eine bessere Vorhersage beduetet.
+
+Zusätzlich haben wir auch die Vorhersage geplottet. Es ist zu sehen, dass diese ziemlich akkurat ist, aber es gibt Ausweichungen für teurere Wohnungen.
+
+*Bild hier*
+
+Wir haben alle 13 Variablen benutzt für dieses Modell. Wir wollen jetzt schauen, ob wir auch ein gutes Ergebniss mit wenigen Variablen erreichen können. Wir werden dafür nur die NOX und RM Attributen verwenden, da bei denen eine starke lineare Beziehung zu erkennen ist. 
+
+```python
+new_X = df[["RM", "NOX"]]
+
+regr = linear_model.LinearRegression()
+regr.fit(new_X, target)
+
+mse = mean_squared_error(target, regr.predict(new_X))
+print("Mittlere Quadratfehler: %f" % mse)
+
+>> Mittlere Quadratfehler: 39.56231
+```
+
+Man sieht, dass zwei Variablen nicht genug sind, um so ein gutes Ergebnis wie mit 13 Variablen zu erreichen. Trotzdem ist der Unterschied zwischen beide Modelle nicht so groß. 
+
 
 ### Klassifizierung mit dem linearen Modell

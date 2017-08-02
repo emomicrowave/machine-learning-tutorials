@@ -26,11 +26,10 @@ target = pd.DataFrame(data.target)
 target.columns = ["PRICE"]
 
 # Numpy arrays für den Daten verwenden und Test- und Trainingsdaten erzeugen
-x = np.array(df)
-y = np.array(target)
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
+x_train, x_test, y_train, y_test = train_test_split(df, target, test_size=0.25, random_state=42)
 
-regr = linear_model.LinearRegression(copy_X=True)
+# Anpassen des linearen Modells
+regr = linear_model.LinearRegression()
 regr.fit(x_train, y_train)
 
 # Koeffiziente der Regression
@@ -54,10 +53,10 @@ print("Mittlere Quadratfehler: %f" % mse)
 # regr.score(x_test, y_test)
 
 # mit einem anderen Modell für Lineare Regression versuchen
-new_X = df[["RM", "CHAS"]]
+new_X = df[["RM", "NOX"]]
 
 regr = linear_model.LinearRegression()
-regr.fit(new_X, y)
+regr.fit(new_X, target)
 
 mse = mean_squared_error(target, regr.predict(new_X))
 print("Mittlere Quadratfehler: %f" % mse)

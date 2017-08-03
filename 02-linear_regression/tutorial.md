@@ -114,9 +114,9 @@ plot2d(df.CHAS, target)
 
 ```
 
-[NOX](figures/figure_NOX)
-[RM](figures/figure_RM)
-[CHAS](figures/figure_CHAS)
+[NOX](figures/figure_NOX.png)
+[RM](figures/figure_RM.png)
+[CHAS](figures/figure_CHAS.png)
 
 Man kann für NOX ein negatives lineares und für RM ein positives lineares Verhältnis erkennen. Es ist aber schwierig ein Muster für CHAS zu finden, weil das eine binäre Variable ist. Wir merken und diese Information und erzeugen zuerst Hervorsagen mit alle 13 Attributen.
 
@@ -226,9 +226,11 @@ def classification_score(y, y_hat):
 
 print("Klassifikationsgüte vor Anpassung: %f: " % classification_score(y, regr.predict(X)))
 plot_prediction3d(X[:,0], X[:,1], y, X[:,0], X[:,1], regr.predict(X))
+
+>> Klassifikationsgüte vor Anpassung: 0.000000: 
 ```
 
-![figure_REGRESSION](figures/figure_REGRESSION)
+![figure_REGRESSION](figures/figure_REGRESSION.png)
 
 Was man hier bekommt ist aber eine Regression. Die Vorhersagen sind Fließkommazahlen und sind nicht durch 1 oder 0 begrenzt. Deswegen ist auch die Klassifikationsgüte 0. Wir müssen die Vorhersagen anpassen und benutzen dafür eine eigene Funktion:
 
@@ -241,13 +243,10 @@ y_hat = fix_predictions(regr.predict(X))
 
 print("Klassifikationsgüte nach Anpassung: %f: " % classification_score(y, y_hat))
 plot_prediction3d(X[:,0], X[:,1], y, X[:,0], X[:,1], y_hat)
-```
-![figure_CLASSIFICATION](figures/figure_CLASSIFICATION.png)
 
-```
->> Klassifikationsgüte vor Anpassung: 0.000000: 
 >> Klassifikationsgüte nach Anpassung: 0.870000:
 ```
+![figure_CLASSIFICATION](figures/figure_CLASSIFICATION.png)
 
 ## Resourcen
 - Git-Repository - [Link](https://gitlab.com/emomicrowave/machine-learning-tutorials/tree/master/02-linear_regression)

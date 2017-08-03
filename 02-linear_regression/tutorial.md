@@ -114,9 +114,11 @@ plot2d(df.CHAS, target)
 
 ```
 
-[NOX](figures/figure_NOX.png)
-[RM](figures/figure_RM.png)
-[CHAS](figures/figure_CHAS.png)
+![figure_NOX](figures/figure_NOX.png)
+
+![figure_RM](figures/figure_RM.png)
+
+![figure_CHAS](figures/figure_CHAS.png)
 
 Man kann für NOX ein negatives lineares und für RM ein positives lineares Verhältnis erkennen. Es ist aber schwierig ein Muster für CHAS zu finden, weil das eine binäre Variable ist. Wir merken und diese Information und erzeugen zuerst Hervorsagen mit alle 13 Attributen.
 

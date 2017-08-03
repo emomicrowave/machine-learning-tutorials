@@ -10,7 +10,7 @@ Eine lineare Beziehung bedeutet formal, dass wir eine Funktion haben die so auss
 Nicht formal bedeutet das, wenn der Wert einer der unabhängigen Variablen wächst, so wächst auch die abhängige Varialbe (oder sinkt, in diesem Fall sprechen wir von einer negativen linearen Beziehung). Unsere Aufgabe ist, wenn wir die Daten plotten, eine solche Linie zu ziehen, damit die mittlere quadratische Abstand von jeder Punkt zur Linie minimal ist. 
 Das gilt natürlich für 2-dimensionale Daten. Für 3-Dimensionale Daten ist die Funktion keine Linie, sondern eine Ebene. 
 
-*Beispiel*
+*figure_REGR_LINE*
 
 Zusätzlich kann man ein lineares Modell auch für binäre Klassifizierung verwenden. Klassen werden typischerweise durch die Zahlen 0 und 1 dargestellt. Wegen der Natur des Algorithmus, bekommt man als Ergebnis vom Modell zahlen zwischen 0 und 1. Dann werden alle Zahlen größer als 0,5 auf 1 gesetzt und der Rest auf 0.
 
@@ -65,7 +65,7 @@ x_train, x_test, y_train, y_test = train_test_split(df, target, test_size=0.25, 
 ```
 Das verwendet 1/4 der Daten als Trainingsdaten, und weil wir ein `random_state` spezifiziert haben, werden bei jeder Ausfürung dieselben Daten als Testdaten gewählt.
 
-Jetzt wollen wir das Regressionsmodell anpassen und dann das Ergebniss analysieren. 
+Jetzt wollen wir das Regressionsmodell anpassen und dann das Ergebnis analysieren. 
 
 ```python
 # Anpassen des linearen Modells
@@ -94,7 +94,6 @@ Wir verwenden die Trainigsdaten um das Modell anzupassen. So werden auch die Koe
 10  -0.924266  PTRATIO
 11   0.013316        B
 12  -0.518566    LSTAT
-
 ```
 
 Es ist zu sehen, dass das Modell startk von den Variablen CHAS, NOX und RM abhängig ist. Wir können besser diese Abhängigkeiten plotten um besseren Überblick über die Beziehungen dieser Variablen zu bekommen. Wir bräuchten dafür eine einfache Funktion.
@@ -137,7 +136,7 @@ Zusätzlich haben wir auch die Vorhersage geplottet. Es ist zu sehen, dass diese
 
 *Bild hier*
 
-Wir haben alle 13 Variablen benutzt für dieses Modell. Wir wollen jetzt schauen, ob wir auch ein gutes Ergebniss mit wenigen Variablen erreichen können. Wir werden dafür nur die NOX und RM Attributen verwenden, da bei denen eine starke lineare Beziehung zu erkennen ist. 
+Wir haben alle 13 Variablen benutzt für dieses Modell. Wir wollen jetzt schauen, ob wir auch ein gutes Ergebnis mit wenigen Variablen erreichen können. Wir werden dafür nur die NOX und RM Attributen verwenden, da bei denen eine starke lineare Beziehung zu erkennen ist. 
 
 ```python
 new_X = df[["RM", "NOX"]]
@@ -155,3 +154,103 @@ Man sieht, dass zwei Variablen nicht genug sind, um so ein gutes Ergebnis wie mi
 
 
 ### Klassifizierung mit dem linearen Modell
+
+Man kann dieses Modell auch für Klassifizierung verwenden. Wie gesagt, das lineare Modell funktioniert nur für binäre Klassifizierung, deswegen brauchen wir einen Datensatz mit nur zwei Klassen. Ich hatte schwierigkeiten einen solchen Datensatz zu finden, deswegen ist das auch die perfekte möglichkeit zu zeigen, wie man mithilfe von `sklearn` einen Datensatz generieren kann.
+
+Ich empfehle, dass man eine andere Datei für diesen Abschnitt verwendet. Importieren wir zuerst die nötige Bibliotheken.
+
+```python
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.datasets import make_classification
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+```
+
+Das Modul `sklearn.datasets` enthält nicht nur viele Datensätze, sondern auch Funktionen, die für die Generierung von Datensätze sorgen. Wir verwenden die Funktion `make_classification`, die Klassifizierungsdaten erzeugt. Rückgabewert sind zwei numpy-Arrays - unabhängige bzgws. abhängige Variablen. Man kann viele Parameter anpassen. Die Dokumentation befindet sich hier: [Link](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)
+
+```python
+X,y = make_classification(n_samples=100, n_features=2, n_informative=1, n_redundant=1)
+```
+
+Wichtige Parameter:
+- `n_samples` - Die Anzahl von Stichproben, die wir haben wollen.
+- `n_features` - Die Anzahl von Merkmale, die wir haben wollen. Ich habe mich für 2 entschieden, um die Daten in 3D plotten zu können
+- `n_informative`, `n_redundant`, `n_repeated` - Eigenschaften der Merkmale. Es muss gelten dass die Summe dieser drei Paramenter muss gleich `n_samples` sein.
+- `n_classes` - Anzahl von Klassen. 2 in unserem Fall, weil wir eine binäre Klassifizierung wollen
+- `n_clusters_per_class` - Wie viele Cluster pro Klasse wir haben wollen. Mehr als 1 bedeutet, dass die Stichproben einer Klasse mehr als 1 Cluster bilden. Es muss auch die folgende Gleichung gelten: `n_clusters * n_clusters_per_class <= 2 ** n_informative`
+
+Um die Daten in diesem Tutorial darstellen zu können brauchen wir zwei Funktionen. Die erste stellt einen dreidimensionalen Datensatz dar und die zweite stellt zwei Datensätze mit verschiedenen Farben dar.
+
+```python
+def plot3d(x,y,z):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.scatter(x,y,z)
+    plt.show()
+
+def plot_prediction3d(x1,y1,z1, x2,y2,z2):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.scatter(x1,y1,z1, alpha=0.5)
+    ax.scatter(x2,y2,z2)
+    plt.show()
+
+# Zufallsdaten darstellen
+plot3d(X[:,0], X[:,1], y)
+```
+
+*figure_RND_DATA*
+
+Weil die Daten zufällig generiert worden sind, sehen sie bei jeder Ausführung anders aus. Um jedes Mal die gleichen Daten zu erzeugen kann man für die `make_classification` Funktion zusätzlich das Parameter `random_state=` auf eine Zahl setzen.
+
+Jetzt können wir das lineare Modell anpassen und die Vorhersagen berechnen. 
+
+```python
+regr = LinearRegression()
+regr.fit(X,y)
+```
+
+Für die Genauigkeit dieses Modells kann man eine andere Metrik verwenden. Da es nur zwei Klassen im Datensatz gibt, ist die Vorhersage entweder richtig oder falsch. Zusätzlich werden die zwei Klassen durch 0 oder 1 bezeichnet. In Numpy kann man zwei Vektoren der gleiche Form so vergleichen: `a == b` Das Ergebnis ist ein Vektor mit der selben Dimension und `True` oder `False` als Werte, abhängig davon ob an dieser Stelle Vektoren `a` und `b` gleich sind. Zunächst können wir diesen neuen Vektor summieren und wir bekommen die Zahl von korrekt klassifizierten Stichproben.
+
+```python
+def classification_score(y, y_hat):
+    correct = np.sum(y == y_hat)
+    return correct/len(y)
+
+print("Klassifikationsgüte vor Anpassung: %f: " % classification_score(y, regr.predict(X)))
+plot_prediction3d(X[:,0], X[:,1], y, X[:,0], X[:,1], regr.predict(X))
+```
+
+*figure_REGRESSION*
+
+Was man hier bekommt ist aber eine Regression. Die Vorhersagen sind Fließkommazahlen und sind nicht durch 1 oder 0 begrenzt. Deswegen ist auch die Klassifikationsgüte 0. Wir müssen die Vorhersagen anpassen und benutzen dafür eine eigene Funktion:
+
+```
+def classification_score(y, y_hat):
+    correct = np.sum(y == y_hat)
+    return correct/len(y)
+
+y_hat = fix_predictions(regr.predict(X))
+
+print("Klassifikationsgüte nach Anpassung: %f: " % classification_score(y, y_hat))
+plot_prediction3d(X[:,0], X[:,1], y, X[:,0], X[:,1], y_hat)
+```
+*figure_CLASSIFICATION*
+
+```
+>> Klassifikationsgüte vor Anpassung: 0.000000: 
+>> Klassifikationsgüte nach Anpassung: 0.870000:
+```
+
+## Resourcen
+- Git-Repository - [Link](https://gitlab.com/emomicrowave/machine-learning-tutorials/tree/master/02-linear_regression)
+- Andere Tutorials auf Englisch 
+[Link 1](http://bigdata-madesimple.com/how-to-run-linear-regression-in-python-scikit-learn/)
+[Link 2](https://medium.com/towards-data-science/simple-and-multiple-linear-regression-in-python-c928425168f9)
+
+### Dokumentation
+- [sklearn.datasets.load_boston](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston)
+- [sklearn.datasets.make_clasification](scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)
+- [sklearn.liear_model.LinearRegression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)

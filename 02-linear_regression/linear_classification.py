@@ -15,7 +15,7 @@ def plot3d(x,y,z):
 def plot_prediction3d(x1,y1,z1, x2,y2,z2):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    ax.scatter(x1,y1,z1)
+    ax.scatter(x1,y1,z1, alpha=0.5)
     ax.scatter(x2,y2,z2)
     plt.show()
 
@@ -43,8 +43,10 @@ regr.fit(X,y)
 
 y_hat = fix_predictions(regr.predict(X))
 
-print("Mittlere Quadratfehler vor Anpassung: %f: " % classification_score(y, regr.predict(X)))
-print("Mittlere Quadratfehler nach Anpassung: %f: " % classification_score(y, y_hat))
+print("Klassifikationsgüte vor Anpassung: %f: " % classification_score(y, regr.predict(X)))
+plot_prediction3d(X[:,0], X[:,1], y, X[:,0], X[:,1], regr.predict(X))
+
+print("Klassifikationsgüte nach Anpassung: %f: " % classification_score(y, y_hat))
 plot_prediction3d(X[:,0], X[:,1], y, X[:,0], X[:,1], y_hat)
 
 

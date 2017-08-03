@@ -139,9 +139,9 @@ print("Mittlere Quadratfehler: %f" % mse)
 
 Eine gute Metrik für die Genauigkeit eines Regressionsmodell ist die mittlere Quadratfehler. Das ist das Quadrat der Differenz zwischen die Vorhersagen und die aktuelle Werte von *y*. Eine kleiere Zahl bedeutet eine akkuratere Vorhersage. Wir haben eine eigene Funktion erstellt, man kann aber auch `regr.score(X,y)` verwenden. Das gibt eine Zahl zwischen 0 und 1, wobei eine größere Zahl eine bessere Vorhersage beduetet.
 
-Zusätzlich haben wir auch die Vorhersage geplottet. Es ist zu sehen, dass diese ziemlich akkurat ist, aber es gibt Ausweichungen für teurere Wohnungen.
+Zusätzlich haben wir auch die Vorhersage geplottet. Es ist zu sehen, dass diese ziemlich akkurat ist, aber es gibt Ausweichungen für teurere Wohnungen. Eine präzisere Linie bedeutet eine höhere Genaigkeit der Vorhersagen.
 
-*Bild hier*
+![figure_ACCURACY](figures/figure_ACCURACY.png)
 
 Wir haben alle 13 Variablen benutzt für dieses Modell. Wir wollen jetzt schauen, ob wir auch ein gutes Ergebnis mit wenigen Variablen erreichen können. Wir werden dafür nur die NOX und RM Attributen verwenden, da bei denen eine starke lineare Beziehung zu erkennen ist. 
 

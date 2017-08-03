@@ -1,3 +1,4 @@
+# Dataset:
 # http://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html
 
 import pandas as pd
@@ -37,13 +38,13 @@ coef = pd.DataFrame({'features': df.columns, 'coef': regr.coef_[0]})
 print(coef)
 
 # interessante Daten plotten
-#plot2d(df.NOX, target)
-#plot2d(df.RM, target)
-#plot2d(df.CHAS, target)
+plot2d(df.NOX, target)
+plot2d(df.RM, target)
+plot2d(df.CHAS, target)
 
 # Vorhersagen berechnen
 pred = regr.predict(x_test)
-#plot2d(y_test, pred)
+plot2d(y_test, pred)
 
 # Mittlere Quadratfehler
 mse = mean_squared_error(y_test, regr.predict(x_test))
@@ -60,7 +61,5 @@ regr.fit(new_X, target)
 
 mse = mean_squared_error(target, regr.predict(new_X))
 print("Mittlere Quadratfehler: %f" % mse)
-
-#TODO: Lineares Modell für Klassifizierung
 
 

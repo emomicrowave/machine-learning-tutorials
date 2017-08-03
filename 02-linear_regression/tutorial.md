@@ -10,7 +10,7 @@ Eine lineare Beziehung bedeutet formal, dass wir eine Funktion haben die so auss
 Nicht formal bedeutet das, wenn der Wert einer der unabhängigen Variablen wächst, so wächst auch die abhängige Varialbe (oder sinkt, in diesem Fall sprechen wir von einer negativen linearen Beziehung). Unsere Aufgabe ist, wenn wir die Daten plotten, eine solche Linie zu ziehen, damit die mittlere quadratische Abstand von jeder Punkt zur Linie minimal ist. 
 Das gilt natürlich für 2-dimensionale Daten. Für 3-Dimensionale Daten ist die Funktion keine Linie, sondern eine Ebene. 
 
-*figure_REGR_LINE*
+![figure_REGR_LINE](figures/figure_REGR_LINE.png)
 
 Zusätzlich kann man ein lineares Modell auch für binäre Klassifizierung verwenden. Klassen werden typischerweise durch die Zahlen 0 und 1 dargestellt. Wegen der Natur des Algorithmus, bekommt man als Ergebnis vom Modell zahlen zwischen 0 und 1. Dann werden alle Zahlen größer als 0,5 auf 1 gesetzt und der Rest auf 0.
 
@@ -21,11 +21,13 @@ Außerdem werden wir `numpy` and `pandas` verwenden, die das Arbeiten mit Daten 
 
 ### Datensatz
 
-Für die Regressionsaufgabe werden wir einen Datensatz über Immobilenpreisen im Boston-Gebiet. Die Daten kommen ursprunglich vom Carnegie Mellon University und man kann ihn hier finden: [Link](http://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html) Zusätzlich sind die Daten in `sklearn.datasets` vorhanden.
+Für die Regressionsaufgabe werden wir einen Datensatz über Immobilenpreisen im Boston-Gebiet. Die Daten kommen ursprunglich vom Carnegie Mellon University und man kann ihn hier finden: [Link](http://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html) 
+
+Zusätzlich sind die Daten in `sklearn.datasets` vorhanden.
 
 Man kann entweder den Link öffnen oder `data.DESCR` aufrufen um eine Beschreibung des Datensatzes zu bekommen, die aber auf Englisch ist. 
 
-Im Datensatz sind zwei Afgabe zu finden:
+Im Datensatz sind zwei Afgaben zu finden:
 - Der PREIS des Houses zu berechnen (*Die Aufgabe, die wir in diesem Tutorial lösen*)
 - Stickstoffmonoxidniveaus (NOX) vorhersagen 
 
@@ -111,7 +113,10 @@ plot2d(df.RM, target)
 plot2d(df.CHAS, target)
 
 ```
-*drei Bilder hier*
+
+[NOX](figures/figure_NOX)
+[RM](figures/figure_RM)
+[CHAS](figures/figure_CHAS)
 
 Man kann für NOX ein negatives lineares und für RM ein positives lineares Verhältnis erkennen. Es ist aber schwierig ein Muster für CHAS zu finden, weil das eine binäre Variable ist. Wir merken und diese Information und erzeugen zuerst Hervorsagen mit alle 13 Attributen.
 
@@ -177,7 +182,7 @@ X,y = make_classification(n_samples=100, n_features=2, n_informative=1, n_redund
 Wichtige Parameter:
 - `n_samples` - Die Anzahl von Stichproben, die wir haben wollen.
 - `n_features` - Die Anzahl von Merkmale, die wir haben wollen. Ich habe mich für 2 entschieden, um die Daten in 3D plotten zu können
-- `n_informative`, `n_redundant`, `n_repeated` - Eigenschaften der Merkmale. Es muss gelten dass die Summe dieser drei Paramenter muss gleich `n_samples` sein.
+- `n_informative`, `n_redundant`, `n_repeated` - Eigenschaften der Merkmale. Es muss gelten dass die Summe dieser drei Paramenter muss gleich `n_features` sein.
 - `n_classes` - Anzahl von Klassen. 2 in unserem Fall, weil wir eine binäre Klassifizierung wollen
 - `n_clusters_per_class` - Wie viele Cluster pro Klasse wir haben wollen. Mehr als 1 bedeutet, dass die Stichproben einer Klasse mehr als 1 Cluster bilden. Es muss auch die folgende Gleichung gelten: `n_clusters * n_clusters_per_class <= 2 ** n_informative`
 
@@ -201,7 +206,7 @@ def plot_prediction3d(x1,y1,z1, x2,y2,z2):
 plot3d(X[:,0], X[:,1], y)
 ```
 
-*figure_RND_DATA*
+![figure_RND_DATA](figures/figure_RND_DATA.png)
 
 Weil die Daten zufällig generiert worden sind, sehen sie bei jeder Ausführung anders aus. Um jedes Mal die gleichen Daten zu erzeugen kann man für die `make_classification` Funktion zusätzlich das Parameter `random_state=` auf eine Zahl setzen.
 
@@ -223,7 +228,7 @@ print("Klassifikationsgüte vor Anpassung: %f: " % classification_score(y, regr.
 plot_prediction3d(X[:,0], X[:,1], y, X[:,0], X[:,1], regr.predict(X))
 ```
 
-*figure_REGRESSION*
+![figure_REGRESSION](figures/figure_REGRESSION)
 
 Was man hier bekommt ist aber eine Regression. Die Vorhersagen sind Fließkommazahlen und sind nicht durch 1 oder 0 begrenzt. Deswegen ist auch die Klassifikationsgüte 0. Wir müssen die Vorhersagen anpassen und benutzen dafür eine eigene Funktion:
 
@@ -237,7 +242,7 @@ y_hat = fix_predictions(regr.predict(X))
 print("Klassifikationsgüte nach Anpassung: %f: " % classification_score(y, y_hat))
 plot_prediction3d(X[:,0], X[:,1], y, X[:,0], X[:,1], y_hat)
 ```
-*figure_CLASSIFICATION*
+![figure_CLASSIFICATION](figures/figure_CLASSIFICATION.png)
 
 ```
 >> Klassifikationsgüte vor Anpassung: 0.000000: 

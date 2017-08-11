@@ -6,7 +6,7 @@ from mpl_toolkits.mplot3d import Axes3D
 
 
 def main():
-    iiidata = load_image("wallpaper.jpg")
+    data = load_image("wallpaper.jpg")
     print(data.shape)
     plot3d(data[:,0], data[:,1], data[:,2])
 

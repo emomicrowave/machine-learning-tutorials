@@ -15,4 +15,4 @@
 - implementation: clustering with chosen K
 - save `matplotlib` plots
 - use *Key points* structure to write tutorial text
-
+- clustering on image pixel data?

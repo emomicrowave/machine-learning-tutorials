@@ -4,9 +4,10 @@
 - how does it work?
 - how to choose a K?
 - clustering on the Iris Dataset
+- artificial dataset from [here](https://github.com/deric/clustering-benchmark)
 - **NO** clustering on image pixel data - *data not suited for k-means clustering*
 - **NEEDS MORE RESEARCH** feature engineering
-- different runs, different results
+- different runs, different results (*spherical dataset)
 - **NEEDS MORE RESEARCH** what is validation
 
 ## TODOS:

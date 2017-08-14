@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 # TODO: Translate comments to german
 
 def main():
-    data = np.unique(data, axis=0)
+    data = load_image("wallpaper.jpg")
     print(data.shape)
     #plot3d(data[:,0], data[:,1], data[:,2])
 
@@ -51,8 +51,7 @@ def main():
     kmeans.fit(data)
     
     # Reduce data, for faster plotting and faster panning
-    data = load_image("wallpaper.jpg")
-    
+    data = np.unique(data, axis=0)
     print("Plotting data...")
     print(data.shape)
 

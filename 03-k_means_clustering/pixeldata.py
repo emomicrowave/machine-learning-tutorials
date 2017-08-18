@@ -33,15 +33,15 @@ def main():
     # for the next 10 iterations
     # ============================================================
 
-    scores = []
-    for i in range(10):
-        print("Running iteration %d" % (i))
-        kmeans = KMeans(n_clusters=3)
-        kmeans.fit(data)
-        scores.append([i, mean_squared_distance(kmeans, data)])
+    #scores = []
+    #for i in range(10):
+    #    print("Running iteration %d" % (i))
+    #    kmeans = KMeans(n_clusters=3)
+    #    kmeans.fit(data)
+    #    scores.append([i, mean_squared_distance(kmeans, data)])
 
-    scores = np.array(scores)
-    plot_cluster_score(scores[:,0], scores[:,1])
+    #scores = np.array(scores)
+    #plot_cluster_score(scores[:,0], scores[:,1])
     
    
     # Plot data and color the different classes with the colors 
@@ -54,8 +54,11 @@ def main():
     data = np.unique(data, axis=0)
     print("Plotting data...")
     print(data.shape)
+    print(np.unique(kmeans.labels_))
 
     cluster_colors = np.array([kmeans.cluster_centers_[x] for x in kmeans.labels_])
+    #data = kmeans.cluster_centers_
+    #cluster_colors = data
     plot3d(data[:,0], data[:,1], data[:,2], colors=cluster_colors/255)
 
 

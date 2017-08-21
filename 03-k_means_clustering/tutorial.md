@@ -1,24 +1,3 @@
-## Key points
-- unsupervized learning
-- uses of clustering
-- how does it work?
-- how to choose a K?
-- clustering on the Iris Dataset
-- artificial dataset from [here](https://github.com/deric/clustering-benchmark)
-- **NO** clustering on image pixel data - *data not suited for k-means clustering*
-- **NEEDS MORE RESEARCH** feature engineering
-- different runs, different results (*spherical dataset*)
-- **NEEDS MORE RESEARCH** what is validation
-
-## TODOS:
-- find a suitable dataset (*IRIS might be one*)
-- implementation: choose a K
-- implementation: clustering with chosen K
-- save `matplotlib` plots
-- use *Key points* structure to write tutorial text
-- clustering on image pixel data?
-- generate clustering steps images for the tutorial
-
 # Einführung
 
 Das ist der dritte Teil einer Serie von Blogbeiträge über Machine learning mit Python. In diesem Tutorial, beschäftigen wir uns mit unbeaufsichtigten Lernen 
@@ -120,7 +99,7 @@ data, classes = make_blobs(n_samples=1000, centers=randint(3,8), random_state=42
 plot2d(data[:,0], data[:,1])
 ```
 
-*FIGURE_RAW_DATA*
+![FIGURE_RAW_DATA](figures/FIGURE_RAW_DATA.png)
 
 ### Wie wählt man eine K?
 
@@ -151,7 +130,7 @@ scores = np.array(scores)
 plot_cluster_score(scores[:,0], scores[:,1])
 ```
 
-*FIGURE_BEST_K*
+![FIGURE_BEST_K](figures/FIGURE_BEST_K.png)
 
 Es ist zu sehen, dass k=5 für diesen Datensatz am besten geeignet ist. Deswegen erstellen wir eine Variable `K_PARAM = 5`, die wir für die weitere Schritte benutzen und zusätzlich einfach verändern können.
 
@@ -174,7 +153,7 @@ scores = np.array(scores)
 plot_cluster_score(scores[:,0], scores[:,1])
 ```
 
-*FIGURE_ITERATION*
+![FIGURE_ITERATION](figures/FIGURE_ITERATION.png)
 
 Dem Diagramm zufolge sind die Daten und die K perfekt für K-Means. Jetzt können wir zum letzten mal das Clustering ausführen und das Endergebnis plotten.
 
@@ -190,7 +169,7 @@ plot2d(data[:,0], data[:,1], kmeans.labels_)
 
 ```
 
-*FIGURE_ENDPLOT*
+![FIGURE_ENDPLOT](figures/FIGURE_ENDPLOT.png)
 
 Es ist zu sehen, dass der Algorithmus sehr gut die verschiedenen Gruppen erkannt hat.
 

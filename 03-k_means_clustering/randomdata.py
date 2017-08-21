@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.datasets import make_blobs
 
-K_PARAM = 2
+K_PARAM = 5
 
 def plot2d(x,y, colors=None):
     fig = plt.figure()

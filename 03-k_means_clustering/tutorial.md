@@ -36,24 +36,30 @@ Biologie (Klassifizierung von Individuen oder Gen-Sequenzierung), Sozialwissensc
 K-Means steht für K-Mittelwerte und ist ein iterativer Algorthmus für Clusteranalyse. Als Eingabe bekommt der Algorithmus eine Zahl *K* und den Datensatz (Sammlung von Merkmale für jede Stichprobe) 
 und versucht danach K unterschiedliche Gruppen im Datensatz zu erkennen. 
 
-*Ein paar Bilder um den Algorithmus zu veranschaulichen*
+![Daten](figures/cluster1.png)
 
 ### Initialisierung
 
 Die erste Schritt ist die Zentroiden der Clustern zu initialisieren. Am häufigsten nimmt man entweder K zufällige Stichproben aus dem Datensatz, oder K zufällige Punkte dazwischen. 
 
+![Zufällige Zentroide](figures/cluster2.png)
+
 ### Verteilung der Daten unter den Clustern
 
-Die nächste Schritt jede Stichprobe in einen Cluster hinzufügen. Am häufigsten verwendet man der quadrat der euklidischen Abstand für eine Metrik. Das heißt es wird für jede Stichprobe das nächstliegende Zentroid gewählt.
+Die nächste Schritt ist jede Stichprobe in einen Cluster hinzufügen. Am häufigsten verwendet man der quadrat der euklidischen Abstand für eine Metrik. Das heißt es wird für jede Stichprobe das nächstliegende Zentroid gewählt.
 
 ### Aktualisierung der Mittelwerte
 
 Zunächst werden die neuen Mittelwerte für jeden Cluster berechnet.
 
+![Iterieren](figures/cluster25.png)
+
 ### Iteration
 
 Die letzten zwei Schritte werden so viel wiederholt bis der Algorithmus ein Stoppkriterium erreicht. Das kann eine Obergrenze der Iterationen sein, oder eine Untergrenze der Veränderung der Koordinaten der Zentroiden. Der Algorithmus konvergiert immer,
 es kann aber sein, dass das keine optimale Lösung ist, und man muss mehrfach den Alorithmus ausführen.
+
+![Endergebnis](figures/cluster3.png)
 
 ## Implementierung mit Python und sklearn
 

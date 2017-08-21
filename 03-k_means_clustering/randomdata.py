@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.datasets import make_blobs
 
-K_PARAM = 5
+K_PARAM = 2
 
 def plot2d(x,y, colors=None):
     fig = plt.figure()
@@ -26,7 +26,7 @@ plot2d(data[:,0], data[:,1])
 scores = []
 for i in range(1,11):
     print("Clustering mit K=%d" % (i))
-    kmeans = KMeans(n_clusters=i)
+    kmeans = KMeans(n_clusters=i, random_state=42)
     kmeans.fit(data)
     scores.append([i, kmeans.score(data)])
 

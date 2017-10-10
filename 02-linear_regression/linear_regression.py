@@ -9,10 +9,12 @@ from sklearn import datasets
 from sklearn.model_selection import train_test_split
 
 # Einfache Funktion für einfache Datendarstellung
-def plot2d(x,y):
+def plot2d(x, y, plot_title=None):
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.scatter(x, y)
+    if plot_title:
+        plt.title(plot_title)
     plt.show()
 
 def mean_squared_error(y,y_hat):
@@ -38,9 +40,9 @@ coef = pd.DataFrame({'features': df.columns, 'coef': regr.coef_[0]})
 print(coef)
 
 # interessante Daten plotten
-plot2d(df.NOX, target)
-plot2d(df.RM, target)
-plot2d(df.CHAS, target)
+plot2d(df.NOX, target, "Verhältnis zwischen NOX (Konzentration von Stockstoffmonoxid)\n und den Preis der Wohnungen")
+plot2d(df.RM, target, "Verhältnis zwischen RM (Durchschnittliche Anzahl von Zimmer)\n und den Preis der Wohnungen")
+plot2d(df.CHAS, target, "Verhältnis zwischen CHAS (Wohnung an Charles River)\n und den Preis der Wohnungen")
 
 # Vorhersagen berechnen
 pred = regr.predict(x_test)

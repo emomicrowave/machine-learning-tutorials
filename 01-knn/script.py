@@ -16,10 +16,14 @@ print(df.head(5))
 colors = list(df['klasse'])
 plt.scatter(df['sepalum_laenge'], df['sepalum_breite'], c=colors)
 plt.title("Sepalum Länge und Sepalum Breite")
+plt.xlabel("Sepalum Länge")
+plt.ylabel("Sepalum Breite")
 plt.show()
 
 plt.scatter(df['petalum_laenge'], df['petalum_breite'], c=colors)
 plt.title("Petalum Länge und Petalum Breite")
+plt.xlabel("Petalum Länge")
+plt.ylabel("Petalum Breite")
 plt.show()
 
 # Training- und Testdaten erzeugen

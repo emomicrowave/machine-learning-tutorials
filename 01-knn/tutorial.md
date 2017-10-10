@@ -22,7 +22,9 @@ Ich habe die Daten vom [UCI Machine Learning Repository](http://archive.ics.uci.
 
 Der Datensatz den ich gewählt habe ist sehr bekannt in der Machine-Learning-Literatur. Er bezieht sich auf drei Arten der Iris Blume. Gegeben sind Sepalumlänge, Sepalumbreite, Petalumlänge, Petalumbreite und Klasse von 150 Individuen. Wir wollen jetzt einen Algorithmus trainieren, Individuen aufgrund den Längen und Breiten zu klassifizieren. Wir verwenden dafür den kNN Algorithmus.
 
-![image](blumen.png)
+![image](figures/blumen.png)
+
+*Bild von [Petr Dlouhý](https://commons.wikimedia.org/wiki/User:Petr_Dlouh%25C3%25BD), lizensiert unter [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en). (Quelle: [Wikipedia - Kelchblatt](https://de.wikipedia.org/wiki/Kelchblatt))*
 
 ## Der kNN Algorithmus
 
@@ -87,8 +89,8 @@ plt.title("Petalum Länge und Petalum Breite")
 plt.show()
 
 ```
-![plot1](plot1.png)
-![plot2](plot2.png)
+![plot1](figures/figure_SEPAL.png)
+![plot2](figures/figure_PETAL.png)
 
 
 Auch ohne einen Algorithmus kann man ein Klassifikationskriterium finden. Es gibt ein lineares Verhältnis zwischen Petalumlänge, Petalumbreite und Klasse der Blume. Jetzt wollen wir den Datensatz in Trainings- und Testdaten zerlegen. In der Regel nimm man für Testdaten zwischen 10 und 30 Prozent aller Daten. Wir nehmen 20 Prozent.

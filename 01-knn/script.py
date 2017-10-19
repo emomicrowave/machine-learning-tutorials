@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
 
 # Datensatz laden 
 df = pd.read_csv('iris.csv', header=None)
@@ -26,18 +27,11 @@ plt.xlabel("Petalum Länge")
 plt.ylabel("Petalum Breite")
 plt.show()
 
-# Training- und Testdaten erzeugen
-test = df.sample(int(len(df) * 0.2))
-train = df.drop(df.index[test.index])
-
-# kNN Implementierung für Klassifizierung benutzen
-
-## In numpy Arrays konvertieren
-x_train = np.array(train.ix[:, 0:4])
-y_train = np.array(train['klasse'])
-
-x_test = np.array(test.ix[:, 0:4])
-y_test = np.array(test['klasse'])
+# Trainings- und Testdaten erzeugen
+x_train, x_test, y_train, y_test = train_test_split(
+                    np.array(df.ix[:, 0:4]), 
+                    np.array(df['klasse']), 
+                    test_size=0.2)
 
 ## kNN Algorithmus
 

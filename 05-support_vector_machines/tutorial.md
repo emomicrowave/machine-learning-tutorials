@@ -4,7 +4,9 @@ Die Trainingsdaten werden im n-dimensionalen Raum geplottet und der Algorithmus 
 den beiden Klassen zu finden, so dass ein möglichst breiter Bereich frei von Stichproben um die Grenze herum ensteht.
 
 ### Stützvektoren
+
 ![support vector](figures/support_vector.png)
+
 Die Grenze ist mittels der nächstliegenden Objekte definiert, die man deswegen *Stützvektoren* nennt. Dafür sind Vektoren, 
 die von der Grenze entfernt liegen, beeinflussen ihre Berechnung nicht, deswegen brauchen die auch nicht im Hauptspeicher
 zu stecken. Aus dieser Grund sind SVN Speichereffizient.

@@ -128,5 +128,5 @@ Der C Parameter ist die Kost der Klassifizierung und wie groß ist die Strafe we
 - liefert keine Wahrscheinlichkeitsschätzungen
 
 ## Ressourcen
-- Git Repository mit dem kompletten Code - [Link](https://gitlab.com/emomicrowave/machine-learning-tutorials/tree/master/05-support_vector_machines)
+- Git Repository mit dem kompletten Code - [Link](https://github.com/emomicrowave/machine-learning-tutorials/tree/master/05-support_vector_machines)
 - Logistische Regression vs. Decision Trees vs. Support Vector Machines - [Link](https://www.edvancer.in/logistic-regression-vs-decision-trees-vs-svm-part1/)

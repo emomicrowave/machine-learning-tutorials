@@ -190,7 +190,7 @@ Das ist aber ein sehr breites Thema und nicht im Rahmen des Blogbeitrags. Es gib
 
 ## Resourcen
 
-- Git-Repository: [Link](https://gitlab.com/emomicrowave/machine-learning-tutorials/tree/master/03-k_means_clustering)
+- Git-Repository: [Link](https://github.com/emomicrowave/machine-learning-tutorials/tree/master/03-k_means_clustering)
 - Clustering Tutorial auf Englisch: [Link](https://www.datascience.com/blog/introduction-to-k-means-clustering-algorithm-learn-data-science-tutorials)
 - On Clustering Validation Techniques - Paper by Maria Halkidiki, Yannis Batistakis, Michalis Vazirgiannis - [Link](http://web.itu.edu.tr/sgunduz/courses/verimaden/paper/validity_survey.pdf)
 

@@ -186,7 +186,7 @@ plt.show()
 ```
 
 ## Resourcen
-- Gitlab-Repository mit dem kompletten Code - [Link](https://gitlab.com/emomicrowave/machine-learning-tutorials/tree/master/01-knn)
+- Github-Repository mit dem kompletten Code - [Link](https://github.com/emomicrowave/machine-learning-tutorials/blob/master/01-knn)
 - Ein anderes Tutorial für kNN (Englisch) - [Link](https://kevinzakka.github.io/2016/07/13/k-nearest-neighbor/)
 - Wikipedia - Kelchblatt - [Link](https://de.wikipedia.org/wiki/Kelchblatt)
 

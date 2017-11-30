@@ -251,7 +251,7 @@ plot_prediction3d(X[:,0], X[:,1], y, X[:,0], X[:,1], y_hat)
 ![figure_CLASSIFICATION](figures/figure_CLASSIFICATION.png)
 
 ## Resourcen
-- Git-Repository - [Link](https://gitlab.com/emomicrowave/machine-learning-tutorials/tree/master/02-linear_regression)
+- Git-Repository - [Link](https://github.com/emomicrowave/machine-learning-tutorials/tree/master/02-linear_regression)
 - Andere Tutorials auf Englisch 
 [Link 1](http://bigdata-madesimple.com/how-to-run-linear-regression-in-python-scikit-learn/)
 [Link 2](https://medium.com/towards-data-science/simple-and-multiple-linear-regression-in-python-c928425168f9)

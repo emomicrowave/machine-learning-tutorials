@@ -1,26 +1,26 @@
 # Einführung in der Machine Learning mit Python
 
-Das ist der erste einer Serie von Blogbeiträge über Machine Learning. Dafür werden wir die Programmiersprache Python verwenden. Die Blogbeiträge gehen davon aus, dass der Leser keinen Hintergrund in Statistikhat, aber Grundkenntnisse in Python besitzt und z.B. Python-Bibliotheken installieren kann.
+Dies ist der erste Blogbeitrag einer ganzen Serie von Blogbeiträgen über Machine Learning. Diese gehen davon aus, dass der Leser über kein Hintergrundwissen in Statistik verfügt, aber Grundkenntnisse in Python besitzt und z.B. Python-Bibliotheken installieren kann.
 
 ## Was ist Machine Learning?
 
-Machine Learning ist ein Gebiet der künstlichen Intelligenz, das als Ziel hat, Computerprogramme zu entwickeln, die selbständig von Daten lernen können und aufgrund dieser Daten präzise Vorhersagen oder Klassifizierunge liefern kann. Typische Probleme aus dem Bereich von Machine Learning sind:
+Machine Learning ist ein Gebiet der künstlichen Intelligenz, das das Ziel hat, Computerprogramme zu entwickeln, die selbständig von Daten lernen können und aufgrund dieser Daten präzise Vorhersagen oder Klassifizierungen liefern können. Typische Anwendungen von Machine Learning Algorithmen sind:
 
-- Der Preis von Aktien nach 6 Monaten vorhersagen, basiert auf Unternehmenleistungen und Wirtschaftsdaten.
-- Die Ziffer einer Postleitzahl eines Bildes identifizieren.
-- Risikofaktoren für Krebs aufgrund klinischen und demografischen Daten abschätzen.
+- Den Preis von Aktien in 6 Monaten basierend auf Unternehmensleistungen und Wirtschaftsdaten vorhersagen.
+- Die Ziffern von Postleitzahlen in einem Bild zu identifizieren.
+- Risikofaktoren für Krebs aufgrund klinischer und demografischer Daten abschätzen.
 
-Man unterscheidet zwischen mehreren Arten von Machine Learning: Supervised (beaufsichtigt) und unsupervised (unbeaufsichtigt) learning. Das beaufsichtigte Lernen verwendet die Eingabewerte *X* und die vorklassifizierten Daten *Y*. Das Ziel ist, eine Funktion *f()* zu finden, mit der *f(x) = y* ist. Dann kann man diese Funktion auf nicht vorklassifizierten Daten anwenden, um Klassifikationen zu erhalten.
+Man unterscheidet zwischen mehreren Arten von Machine Learning: Supervised (überwacht) und Unsupervised (unüberwacht) Learning. Das überwachte Lernen verwendet die Eingabewerte `X` und die vorklassifizierten Daten `Y`. Das Ziel ist, eine Funktion `f()` zu finden, mit der `f(x) = y` ist. Dann kann man diese Funktion auf nicht vorklassifizierte Daten anwenden, um Klassifikationen zu erhalten.
 
-Beim unbeaufsichtigten Lernen haben wir nur Eingabedaten *X*. Das Ziel ist es, Strukturen oder Muster innerhalb der Daten zu finden, mit deren Hilfe man mehr Information über die Daten erfahren kann. Diese Art von Lernen ist 'unbeaufsichtigt' genannt, weil es keine 'richtige' Antwort gibt.
+Beim unüberwachten Lernen haben wir nur die Eingabedaten `X`. Das Ziel ist es, Strukturen oder Muster innerhalb der Daten zu finden, mit deren Hilfe man mehr Information über die Daten erfahren kann. Diese Art von Lernen wird 'unüberwacht' genannt, weil es keine vordefinierte 'richtige' Antwort gibt.
 
-Zwei weitere wichtige Begriffe sind *Klassifizierung* und *Regression*. Klassifizierung bedeutet, dass unsere Ausgabedaten *Y* keine metrische Darstellung haben. Zum Beispiel kann man damit mit dem Gewicht und der Größe die Hühnerart bestimmen. Ein Beispiel für Regression wäre es, wenn wir den Kaufpreis eines Hauses aufgrund der Lage, Größe und Anzahl der Zimmer bestimmen.
+Zwei weitere wichtige Begriffe sind *Klassifizierung* und *Regression*. Klassifizierung bedeutet, dass unsere Ausgabedaten `Y` keine metrische Darstellung haben. Beispielsweise kann man mit dem Gewicht und der Größe eines Huhns die Hühnerart bestimmen. Ein Beispiel für Regression wäre, den Kaufpreis eines Hauses aufgrund der Lage, Größe und Anzahl der Zimmer zu bestimmen.
 
 ## Datensatz holen
 
-Ich habe die Daten vom [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Iris) geholt. Dort kann man viele verschiedene Datensätze finden, die alle kostenlos sind. 
+Der Datensatz stammt aus dem [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Iris), wo sich viele verschiedene kostenlose Datensätze finden.
 
-Der Datensatz den ich gewählt habe ist sehr bekannt in der Machine-Learning-Literatur. Er bezieht sich auf drei Arten der Iris Blume. Gegeben sind Sepalumlänge, Sepalumbreite, Petalumlänge, Petalumbreite und Klasse von 150 Individuen. Wir wollen jetzt einen Algorithmus trainieren, Individuen aufgrund den Längen und Breiten zu klassifizieren. Wir verwenden dafür den kNN Algorithmus.
+Der gewählte Datensatz ist sehr bekannt in der Machine-Learning-Literatur. Er bezieht sich auf die drei Arten der Iris Blume. Gegeben sind Sepalumlänge, Sepalumbreite, Petalumlänge, Petalumbreite und die Klassifizierung von 150 Individuen. Wir wollen jetzt einen Algorithmus trainieren, um Individuen aufgrund der Längen und Breiten zu klassifizieren. Hierfür verwenden wir den kNN-Algorithmus.
 
 ![image](figures/blumen.png)
 
@@ -28,106 +28,83 @@ Der Datensatz den ich gewählt habe ist sehr bekannt in der Machine-Learning-Lit
 
 ## Der kNN Algorithmus
 
-KNN steht für *k nearest neighbours (k nächste Nachbarn)*.Das ist ein robuster und beaufsichtigter Algorithmus, der sowohl für Klassifizierung als auch für Regression benutzt werden kann. Zusätzlich wird kein Modell erstellt, sondern es werden alle Trainingsdaten bei jeder Klassifizierung geladen.
- 
-Das bedeutet, dass kNN keine Zeit für das Trainieren braucht, dafür entstehen durch den großen Datensatz hohe Hauptspeicherkosten bei der Klassifizierungsphase. Außerdem ist die Berechnung teuer, weil für jede Klassifizierung der ganze Datensatz iteriert werden muss.
+KNN steht für *k nearest neighbours (k nächste Nachbarn)*. Das ist ein robuster und überwachter Algorithmus, der sowohl für Klassifizierung als auch für Regression verwendet werden kann. Zusätzlich wird kein Modell erstellt, sondern alle Trainingsdaten werden bei jeder Klassifizierung geladen.
+
+Das bedeutet, dass kNN keine Zeit zum Trainieren braucht, dafür entstehen durch den großen Datensatz hohe Hauptspeicherkosten bei der Klassifizierungsphase. Außerdem ist die Berechnung teuer, weil für jede Klassifizierung der ganze Datensatz iteriert werden muss.
 
 ## Wie funktioniert kNN?
 
-KNN plottet alle Trainingsdaten in einen N-dimensionalen Vektorraum, wobei n die Dimension des Eingabevektors ist. In unserem Fall ist *n=4*, weil unsere Eingabewerte Sepalumlänge und -breite und Petalumlänge und -breite sind.
+KNN plottet alle Trainingsdaten in einen N-dimensionalen Vektorraum, wobei n die Dimension des Eingabevektors ist. In unserem Fall ist `n=4`, weil unsere Eingabewerte Sepalumlänge und -breite und Petalumlänge und -breite sind.
 
-Für jedes Element das wir klassifizieren wollen, berechnen wir den Abstand zwischen dem Element und jedem Mitglieds der Trainingsdaten. Häufig verwendet man den euklidischen Abstand, aber es funktioniert auch mit anderen Abstandsmetriken.
+Für jedes Element, das wir klassifizieren wollen, berechnen wir den Abstand zwischen dem Element und jedem Mitglied der Trainingsdaten. Häufig verwendet man den euklidischen Abstand, es funktioniert aber auch mit anderen Abstandsmetriken.
 
-Nachdem wir alle Abstände haben, nehmen wir *K* Elemente mit dem geringsten Abstand. Abhängig davon, ob wir ein Klassifikationsproblem oder ein Regressionsproblem haben, nehmen wir entweder die am meisten vorkommende Klasse als Ergebnis oder den Durchschnitt des Y Parameters der Trainingsdaten.
+Nachdem wir alle Abstände haben, nehmen wir K Elemente mit dem geringsten Abstand. Abhängig davon, ob wir ein Klassifikationsproblem oder ein Regressionsproblem haben, nehmen wir entweder die am meisten vorkommende Klasse als Ergebnis oder den Durchschnitt des Y Parameters der Trainingsdaten.
 
-Wie wählt man ein *K* ? Das ist eine gute Frage. Wichtig für Machine Learning Algorithmen ist es, gute Hyperparameter zu wählen, damit die besten Ergebnisse herauskommen. Häufig verändert man Parameter, um den besten zu finden. In unserem Fall werden wir mit *k=5* versuchen.
+Wie wählt man ein K ? Das ist eine gute Frage. Wichtig für Machine Learning Algorithmen ist es, gute Hyperparameter zu wählen, um die besten Ergebnisse zu erzielen. In der Regel möchte man den Abstand zwischen den Nachbarn minimieren, um die bestmögliche Genauigkeit zu erhalten. Man kann Hamming-Abstand für Klassifizierungsprobleme und Manhattan, Minkowski oder euclidischen Abstand für Regressionsprobleme verwenden. Das Problem, mit welchem wir uns beschäftigen, ist aber ziemlich einfach, und wir können einfach `k=5` setzen.
 
 ## Code
 
-Wir werden ein paar Bibliotheken für die Berechnung und Machine Learning verwenden: `pandas`, `numpy`, `matplotlib` und `scikit-learn`. Wir importieren alle Bilbliotheken und dann auch die Daten:
+Wir werden ein paar Bibliotheken für die Berechnung und Machine Learning verwenden: `numpy`, `matplotlib` und `scikit-learn`. Wir importieren alle Bilbliotheken und dann auch die Daten:
 
 ```python
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
+from sklearn.datasets import load_iris
 from sklearn.neighbors import KNeighborsClassifier
-
-# Datensatz laden und Spalten benennen 
-df = pd.read_csv('iris.csv', header=None)
-df.columns = ['sepalum_laenge', 'sepalum_breite', 'petalum_laenge', 'petalum_breite', 'klasse']
-
-```
-
-Die Arten von Iris Blumen sind als Zeichenketten (strings) gegeben. Das ist eine quantitative Variable und wir dadurch ergibt sich ein Klassifikationsproblem. Weil wir mit Zeichenketten nicht rechnen können, müssen wir qualitativen Variablen einen numerischen Wert zuordnen. In unserem Fall benutzen wird die `factorize` Methode von pandas:
-
-```python
-# Klasse der Datensatz als numerische Werte darstellen
-df['klasse'] = pd.factorize(df['klasse'])[0]
-```
+from sklearn.model_selection import train_test_split
+ 
+# Datensatz laden
+iris = load_iris()
 
 ```
-   sepalum_laenge  sepalum_breite  petalum_laenge  petalum_breite  klasse
-0             5.1             3.5             1.4             0.2       0
-1             4.9             3.0             1.4             0.2       0
-2             4.7             3.2             1.3             0.2       0
-3             4.6             3.1             1.5             0.2       0
-4             5.0             3.6             1.4             0.2       0
-```
 
-Jetzt wollen wir das Ergebnis anschauen und die Daten plotten. Wir verwenden dafür `matplotlib`. Zunächst wird in einem Fenster das erste Bild angezeigt. Schließt man es, erscheint das zweite Bild. Nachdem man das zweite Fenster geschlossen hat, läuft das Programm weiter.
+Jetzt wollen wir das Ergebnis anschauen und die Daten plotten. Wir verwenden dafür `matplotlib`. Zunächst wird in einem Fenster das erste Bild angezeigt. Schließt man das erste Fenster, erscheint das zweite Bild. Nachdem man das zweite Fenster geschlossen hat, läuft das Programm weiter.
 
 ```python
 # Daten plotten
-colors = list(df['klasse'])
-plt.scatter(df['sepalum_laenge'], df['sepalum_breite'], c=colors)
+colors = list(iris['target'])
+ 
+plt.scatter(iris['data'][:, 0], iris['data'][:, 1], c=colors)
 plt.title("Sepalum Länge und Sepalum Breite")
+plt.xlabel("Sepalum Länge")
+plt.ylabel("Sepalum Breite")
 plt.show()
-
-plt.scatter(df['petalum_laenge'], df['petalum_breite'], c=colors)
+  
+plt.scatter(iris['data'][:, 2], iris['data'][:, 3], c=colors)
 plt.title("Petalum Länge und Petalum Breite")
+plt.xlabel("Petalum Länge")
+plt.ylabel("Petalum Breite")
 plt.show()
-
 ```
 ![plot1](figures/figure_SEPAL.png)
 ![plot2](figures/figure_PETAL.png)
 
 
-Auch ohne einen Algorithmus kann man ein Klassifikationskriterium finden. Es gibt ein lineares Verhältnis zwischen Petalumlänge, Petalumbreite und Klasse der Blume. Jetzt wollen wir den Datensatz in Trainings- und Testdaten zerlegen. In der Regel nimm man für Testdaten zwischen 10 und 30 Prozent aller Daten. Wir nehmen 20 Prozent.
+Auch ohne einen Algorithmus kann man ein Klassifikationskriterium finden. Es gibt ein lineares Verhältnis zwischen Petalumlänge, Petalumbreite und Klasse der Blume. Jetzt wollen wir den Datensatz in Trainings- und Testdaten zerlegen. In der Regel nimmt man für Testdaten zwischen 10 und 30 Prozent aller Daten. Wir nehmen 20 Prozent.
 
-Wir benutzen dafür `DataFrame.sample(n)` um n beliebige Vektoren aus den Datensatz als Testdaten zu verwenden. Für Trainingsdaten nehmen wir den Rest mithilfe der `DataFrame.drop()` Funktion, die bestimmte Vektoren aus einer Tabelle entfernt.
+Wir benutzen dafür die Funktion `sklearn.model_selection.train_test_split()` um 20 Prozent der Daten als Trainingsdaten zu nehmen. Die Funktion sorgt dafür, dass jedes Mal zufällige Stichproben ausgewählt wird. Zusätzlich wollen wir lieber mit numpy Arrays arbeiten und wandeln deswegen das pandas DataFrame zu einem numpy Array um.
 
 ```python
-# Training- und Testdaten erzeugen
-test = df.sample(int(len(df) * 0.2))
-train = df.drop(df.index[test.index])
+# Trainings- und Testdaten erzeugen
+x_train, x_test, y_train, y_test = train_test_split(
+                    np.array(iris['data']),
+                    np.array(iris['target']),
+                    test_size=0.2)
 
 ```
 
-Jetzt sind wir fast fertig kNN anzuwenden. Wir benutzen die Implementierung von `scikit-learn`. Dafür ist aber erforderlich, dass die Daten in einer `numpy`-Array sind.
-
-```python
-## In numpy Arrays konvertieren
-x_train = np.array(train.ix[:, 0:4])
-y_train = np.array(train['klasse'])
-
-x_test = np.array(test.ix[:, 0:4])
-y_test = np.array(test['klasse'])
-```
-
-Die kNN Implementierung:
+Die kNN Implementierung mit `sklearn`:
 
 ```python
 ## kNN Algorithmus
-
 knn = KNeighborsClassifier(n_neighbors=5)
-
+ 
 knn.fit(x_train, y_train)
-
+ 
 pred = knn.predict(x_test)
 ```
 
-So einfach war es. Zuerst erzeugen wir ein Klassifikator-Objekt, mit *k=5*. Dann werden die Daten geplottet, und danach erstellen wir einen Vektor mit alle Vorhersagen. Um die genauigkeit zu überprüfen bräuchten wir eine einfache Funktion.
+So einfach ist es. Zuerst erzeugen wir ein Klassifikator-Objekt mit `k=5`. Dann werden die Daten geplottet und danach erstellen wir einen Vektor mit allen Vorhersagen. Um die Genauigkeit zu überprüfen, benötigen wir eine einfache Funktion.
 
 ```python
 ### Funktion, die die Genauigkeit der Vorhersage berechnet
@@ -140,15 +117,14 @@ def calculate_accuracy(pred, target):
 
     return counter / len(pred)
 
-
 print(calculate_accuracy(pred, y_test))
 
 ```
 
 ## Einen eigenen kNN Klassifikator entwickeln
-Mit Hilfe des Pakets ist es einfach, ein kNN einzusetzen. Um zu wissen, wie genau kNN funktioniert, werden wir unsere eigene Implementierung entwickeln.
+Mithilfe des Pakets ist es einfach, ein kNN einzusetzen. Um zu wissen, wie genau kNN funktioniert, werden wir unsere eigene Implementierung entwickeln.
 
-Das ist die Funktion, welche genau eine Vorhersage für ein Element gibt:
+Das ist die Funktion, welche eine genaue Vorhersage für ein Element gibt:
 
 ```python
 def predict_one(k_neighbors, x_train, y_train, to_predict):
@@ -193,11 +169,25 @@ pred = kNN(5, x_train, y_train, x_test)
 print(calculate_accuracy(pred, y_test))
 ```
 
-Wir sollen für beiden Algorithmen eine Genauigkeit zwischen *0,95* und *1.00* bekommen. Das bedeutet, dass die Daten sich sehr leicht durch KNN klassifizieren lassen. Außerdem ist kNN ein starker Algorithmus für Machine Learning, welcher auch sehr einfach zu Implementieren ist.
+Wir sollen für beiden Algorithmen eine Genauigkeit zwischen 0,95 und 1.00 bekommen. Das bedeutet, dass die Daten sich sehr leicht durch KNN klassifizieren lassen. Außerdem ist kNN ein starker Algorithmus für Machine Learning, welcher auch sehr einfach zu implementieren ist.
+
+Zum Vergleich die Vorhersage und die Vorgabe der Daten
+
+```python
+#Vergleich von Vorhersage und Vorgabe
+fig, (ax1, ax2) = plt.subplots(ncols=2, sharex=True, sharey=True)
+ax1.scatter(x_test[:, 0], x_test[:, 1], c=pred)
+ax1.set(title='Vorhersage Iris', ylabel='Petalum Breite', xlabel='Petalum Länge')
+ 
+ax2.scatter(x_test[:, 0], x_test[:, 1], c=y_test)
+ax2.set(title='Vorgabe Iris', xlabel='Petalum Länge')
+plt.setp(ax2.get_yticklabels(), visible=False)
+plt.show()
+```
 
 ## Resourcen
+- Gitlab-Repository mit dem kompletten Code - [Link](https://gitlab.com/emomicrowave/machine-learning-tutorials/tree/master/01-knn)
 - Ein anderes Tutorial für kNN (Englisch) - [Link](https://kevinzakka.github.io/2016/07/13/k-nearest-neighbor/)
-- Pandas Dokumentation (Englisch) - [Link](http://pandas.pydata.org/pandas-docs/stable/)
 - Wikipedia - Kelchblatt - [Link](https://de.wikipedia.org/wiki/Kelchblatt)
 
 

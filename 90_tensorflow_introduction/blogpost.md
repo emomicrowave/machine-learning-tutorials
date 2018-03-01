@@ -40,10 +40,17 @@ Eine andere Anwendung von Bilderkennung mit TensorFlow ist in der Landwirschaft.
 Hier ist ein weiterer Anwendungsfall von TensorFlow: Firmen erhalten jeden Tag zu viele E-Mails. Bis vor kurzem wurden sie meist in der Reihenfolge ihrer Ankunf verarbeitet. Ein Problem wurde in Notfällen entstehen, wenn das Unternehmen zu viele E-Mails erhält, um sie effektiv zu verarbeiten. Eine Möglichkeit, dieses Problem zu lösen, besteht darin, *Natural Language Processing* zu verwenden, um die Stimmung und das Thema eingehender E-Mails zu verstehen und ihnen automatisch Priorität zuzuweisen.
 
 ## Interessante Projekte
-Eine interessante Anwendung von TensorFlow sieht man im (*Neural Style Projekt*)[https://github.com/cysmith/neural-style-tf] auf Github. Der Algorithmus synthesiert einen Pastiche: ein künstlerisches Werk, das offen das Werk eines vorangegangenen Künstlers imitiert. In diesem Fall wird der Inhalt eines Bildes mit dem Stil eines anderen Bildes kombiniert. Unten sieht man eine Reihe von Häusern im Tübingen mit Blick auf den Neckar, kombiniert mit den Kunststilen verschiedener Gemälde.
+### Neural Style
+Eine interessante Anwendung von TensorFlow sieht man im [*Neural Style* Projekt](https://github.com/cysmith/neural-style-tf) auf Github. Der Algorithmus synthesiert einen Pastiche: ein künstlerisches Werk, das offen das Werk eines vorangegangenen Künstlers imitiert. In diesem Fall wird der Inhalt eines Bildes mit dem Stil eines anderen Bildes kombiniert. Unten sieht man eine Reihe von Häusern im Tübingen mit Blick auf den Neckar, kombiniert mit den Kunststilen verschiedener Gemälde.
 
 ![neural style example](images/neural_style.png)
 
-*arXiv - (A Neural Algorithm of Artistic Style)[https://arxiv.org/abs/1508.06576] - (2015) Gatys, Ecker, Bethge*
+*arXiv - [A Neural Algorithm of Artistic Style](https://arxiv.org/abs/1508.06576) - (2015) Gatys, Ecker, Bethge*
 
+### Transfer Learning
+Was TensorFlow auch bietet, sind vortrainierte Modelle für Objekterkennung in Bildern, die sich perfekt für *Transfer Learning* eignen. Transfer Learning besteht darin, die bereits vorhandenen ersten Schichten der Modelle und die nützlichen Abstraktionen drin zu verwenden und so nur die obersten Schichten von Grund auf zu trainieren. Die Verwendung dieser Methode führt zu viel schnelleren Trainingszeiten und man benötigt nicht so große Datensätze, um eine gute Genauigkeit zu erreichen. Ein Beispiel wäre das [ Umtrainieren des *Inception*-Modells zur Klassifizierung von Blumen. ](https://www.tensorflow.org/tutorials/image_retraining)
 
+Andere Modelle kann man hier finden: [Link](https://github.com/tensorflow/models)
+
+### Sonstige
+Die Github-Repository [*Awesome TensorFlow*](https://github.com/jtoy/awesome-tensorflow) enthält zahlreiche interessante Projekte sowie Tutorials, Videos und Blogbeiträge. 

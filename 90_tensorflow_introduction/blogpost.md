@@ -40,7 +40,7 @@ Die Github-Repository [*Awesome TensorFlow*](https://github.com/jtoy/awesome-ten
 Wenn Sie TensorFlow selbst ausprobieren möchten. bietet die [offizielle Website](https://www.tensorflow.org/) viele Tutorials zu Themen wie die Installation des Frameworks und die Implementierung eingener Image-Klassifikatoren. Typische Anfänger-Datensätze sind *MNIST, CIFAR10 und ImageNet*.
 
 ### MNIST
-![mnist](images/mnist.png)
+![mnist](images/mnist.jpg)
 
 Die MNIST-Datenbank ist eine große Datenbank, die handgeschriebene Ziffern enthält und wird häufig zum Trainieren von neuronalen Netzen für Bildverarbeitungssysteme verwendet.
 

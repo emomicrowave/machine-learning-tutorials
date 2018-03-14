@@ -59,5 +59,3 @@ Der CIFAR-10 Datensatz ist eine Sammlung von Bildern, die üblicherweise zum Tra
 ![imagenet](images/imagenet.png)
 
 Das ImageNet-Projekt ist eine große visuelle Datenbank, die für den Einsatz in Objekterkennungssoftware entwickelt wurde. Es bietet 14 Millionen Links zu handannotierten Bildern und hat ca. 20 000 Klassen. Es gibt auch die jährliche *ImageNet Large Scale Visual Recognition Challenge*, bei der Forscherteams ihre Algorithmen anhand des gegebenen Datensatzes auswerten und um eine höhere Genauigkeit bei mehreren Aufgaben konkurieren.
-
-## Serving the models

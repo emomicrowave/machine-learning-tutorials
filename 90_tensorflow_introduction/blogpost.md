@@ -10,6 +10,12 @@ Es wurde festgestellt, dass es viel billiger und schneller ist, Grafikkarten (GP
 Deswegen bietet auch TensorFlow ein leistungsfähiges Backend, das es ermöglicht, ein Modell auf einer oder mehreren GPUs zu beitreiben oder einfach in verteilte Systeme zu integrieren. Nicht nur das, sondern bietet er auch verschiedene APIs in verschiedenen Sprachen (Python, C++, Java, Go, u.a) damit man einfach ein Machine Learning Modell erstellen, trainieren und bereitstellen kann.
 
 ## Wofür nutzen Unternehmen TensorFlow
+Mit der zunehmenden Popularität von Deep Learning beginnen immer mehr Unternehmen, Deep Learning aus verschiedenen Gründen zu übernehmen. Da Maschinen zunehmend mit Sensoren ausgestattet und über Funknetzwerke miteinander verbunden sind, hat man die Möglichkeit, eine Vielzahl von Daten zu sammeln und für unterschiedliche Zwecke auszuwerten. Die gewonnenen Erkenntnisse werden z.B. zur Charakterisierung und Reduzierung von Fehlern in Produktionsmaschinen, zur Prognose des Ressourcenbedarfs in Lieferketten, zur Automatisierung und Optimierung von Prozessen, wie z.B. dem Routing von Maschinen oder Personen in Lagern und vielen weiteren Beispielen genutzt.
+
+*Bild hier*
+
+Obwohl es sich hierbei nicht um ein konkretes Beispiel für TensorFlow-Anwendungsfälle handelt, könnte TensorFlow durchaus zur Entwicklung von Lösungen für diese Probleme verwendet werden, da es bereits über die erforderliche Funktionalität verfügt. Unten sind konkretere Beispiele für Anwendungsfälle von TensorFlow.
+
 TensorFlow hat viele Stärke wie z.B Bilderkennung. Firmen wie Amazon und Netflix verwenden es um eine Datenbank zu erstellen mit welchen Objekten sich in verschiedenen Szenen aus Filmen oder Serien befinden. Zusätzlich wird auch Gesichtserkennung angewendet, um eine Liste von Schauspielern in der aktuellen Szene.
 
 ![object detection](images/object_recognition.png)
@@ -53,3 +59,5 @@ Der CIFAR-10 Datensatz ist eine Sammlung von Bildern, die üblicherweise zum Tra
 ![imagenet](images/imagenet.png)
 
 Das ImageNet-Projekt ist eine große visuelle Datenbank, die für den Einsatz in Objekterkennungssoftware entwickelt wurde. Es bietet 14 Millionen Links zu handannotierten Bildern und hat ca. 20 000 Klassen. Es gibt auch die jährliche *ImageNet Large Scale Visual Recognition Challenge*, bei der Forscherteams ihre Algorithmen anhand des gegebenen Datensatzes auswerten und um eine höhere Genauigkeit bei mehreren Aufgaben konkurieren.
+
+## Serving the models
